@@ -4,133 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SpotifyApp {
-
-    public static void clearTerminal(){
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
-    public static void printSpootifyLogo(){
-        System.out.println("\u001B[32m\n               ⢀⣠⣤⣤⣶⣶⣶⣶⣤⣤⣄⡀\n            ⢀⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⡀\n        ⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦\n        ⠀⢀⣾⣿⡿⠿⠛⠛⠛⠉⠉⠉⠉⠛⠛⠛⠿⠿⣿⣿⣿⣿⣿⣷⡀\n        ⠀⣾⣿⣿⣇⠀⣀⣀⣠⣤⣤⣤⣤⣤⣀⣀⠀⠀⠀⠈⠙⠻⣿⣿⣷ \n        ⢠⣿⣿⣿⣿⡿⠿⠟⠛⠛⠛⠛⠛⠛⠻⠿⢿⣿⣶⣤⣀⣠⣿⣿⣿⡄\n        ⢸⣿⣿⣿⣿⣇⣀⣀⣤⣤⣤⣤⣤⣄⣀⣀⠀⠀⠉⠛⢿⣿⣿⣿⣿⡇  sPOOtify\n        ⠘⣿⣿⣿⣿⣿⠿⠿⠛⠛⠛⠛⠛⠛⠿⠿⣿⣶⣦⣤⣾⣿⣿⣿⣿⠃  by: @duvrdx\n        ⠀⢿⣿⣿⣿⣿⣤⣤⣤⣤⣶⣶⣦⣤⣤⣄⡀⠈⠙⣿⣿⣿⣿⣿⡿\n        ⠀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣾⣿⣿⣿⣿⡿⠁\n        ⠀⠀⠀⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟\n        ⠀⠀⠀⠀⠈⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠁\n        ⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⠛⠿⠿⠿⠿⠛⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀\n\n");
-    }
     
-    public static void pressEnter(Scanner dataScanner){
-        System.out.println("==================================================================================+++---");
-        System.out.println("Pressione 'ENTER' para ir ao menu");
-        System.out.println("==================================================================================+++---");
-        dataScanner.nextLine();
-    }
-
-    public static void closeScanner(Scanner scanner){
-        scanner.close();
-    }
-
-    public static SpootifyMusic createMusic(Scanner dataScanner){
-        Scanner stringCutter;
-        String title;
-        int duration;
-        List<String> songwriters = new ArrayList<String>();
-        String bigSW;
-        List<String> interpreters = new ArrayList<String>();
-        String bigIT;
-        String genre;
-        
-        System.out.println("Titulo:");
-        title = dataScanner.nextLine();
-
-        System.out.println("Duração:");
-        duration = dataScanner.nextInt();
-        dataScanner.nextLine();
-        
-        System.out.println("Genero:");
-        genre = dataScanner.nextLine();
-
-        System.out.println("Compositores: Separe com ;");
-        bigSW = dataScanner.nextLine();
-
-        System.out.println("Interpretes: Separe com ;");
-        bigIT = dataScanner.nextLine();
-
-        stringCutter = new Scanner(bigSW);
-        stringCutter.useDelimiter(";");
-
-        while(stringCutter.hasNext()){
-            songwriters.add(stringCutter.next());
-        }
-        stringCutter.close();
-
-        stringCutter = new Scanner(bigIT);
-        stringCutter.useDelimiter(";");
-
-        while(stringCutter.hasNext()){
-            interpreters.add(stringCutter.next());
-        }
-        stringCutter.close();
-
-        return new SpootifyMusic(title, duration, songwriters, interpreters, genre);
-    }
-
-    public static SpootifyPodcast createPodcast(Scanner dataScanner){
-        String title;
-        int duration;
-        String presenter;
-        String review;
-        
-        System.out.println("Titulo:");
-        title = dataScanner.nextLine();
-
-        System.out.println("Duração:");
-        duration = dataScanner.nextInt();
-        dataScanner.nextLine();
-        
-        System.out.println("Apresentador:");
-        presenter = dataScanner.nextLine();
-
-        System.out.println("Descrição:");
-        review = dataScanner.nextLine();
-
-        return new SpootifyPodcast(title, duration, presenter, review);
-    }
-
-    public static SpootifyAudiobook createAudioook(Scanner dataScanner){
-        Scanner stringCutter;
-        String title;
-        int duration;
-        List<String> authors = new ArrayList<String>();
-        String bigAT;
-        String storyteller;
-        String publisher;
-        String synopsis;
-        
-        System.out.println("Titulo:");
-        title = dataScanner.nextLine();;
-
-        System.out.println("Duração:");
-        duration = dataScanner.nextInt();
-        dataScanner.nextLine();
-        
-        System.out.println("Editora:");
-        publisher = dataScanner.nextLine();
-
-        System.out.println("Autores: Separe com ;");
-        bigAT = dataScanner.nextLine();
-
-        System.out.println("Narrador:");
-        storyteller = dataScanner.nextLine();
-
-        System.out.println("Sinopse:");
-        synopsis = dataScanner.nextLine();
-
-        stringCutter = new Scanner(bigAT);
-        stringCutter.useDelimiter(";");
-
-        while(stringCutter.hasNext()){
-            authors.add(stringCutter.next());
-        }
-        stringCutter.close();
-
-        return new SpootifyAudiobook(title, duration, storyteller, synopsis, authors, publisher);
-    }
 
     public static void addToPlaylist(Scanner dataScanner, String playlistTitle, SpootifyMenu menu){
         boolean wannaAdd = true;
@@ -307,14 +181,14 @@ public class SpotifyApp {
         String playlistTitle;
 
         // Criando playlist com dados do usuário
-        clearTerminal();
-        printSpootifyLogo();
+        SpootifyUI.clearTerminal();
+        SpootifyUI.printSpootifyLogo();
         System.out.println("Olá, seja bem vindo ao sPOOtify!\n");
-        pressEnter(dataScanner);
+        SpootifyUI.pressEnter(dataScanner);
 
         while(actualCommand != 8){
-            clearTerminal();
-            printSpootifyLogo();
+            SpootifyUI.clearTerminal();
+            SpootifyUI.printSpootifyLogo();
             System.out.println("Selecione uma opção");
             System.out.println("==================================================================================+++---");
             System.out.println("1. Preencher a sua Biblioteca           | 2. Listar os conteúdos da Bilioteca\n3. Exibir informações da Biblioteca     | 4. Criar uma nova Playlist");
@@ -323,8 +197,8 @@ public class SpotifyApp {
             actualCommand = dataScanner.nextInt();
             dataScanner.nextLine();
 
-            clearTerminal();
-            printSpootifyLogo();
+            SpootifyUI.clearTerminal();
+            SpootifyUI.printSpootifyLogo();
 
             switch(actualCommand){
                 // Adicionar conteúdo a biblioteca
