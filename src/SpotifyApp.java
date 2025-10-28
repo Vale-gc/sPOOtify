@@ -208,13 +208,13 @@ public class SpotifyApp {
 
         switch(actualCommand){
             case 1:
-                filteredList = menu.getPlaylist(playlistTitle).filterBy(true, false, false);
+                filteredList = PlaylistFilter.filterBy(menu.getPlaylist(playlistTitle), List.of("music"));
                 break;
             case 2:
-                filteredList = menu.getPlaylist(playlistTitle).filterBy(false, true, true);
+                filteredList = PlaylistFilter.filterBy(menu.getPlaylist(playlistTitle), List.of("podcast", "audiobook"));
                 break;
             case 3:
-                filteredList = menu.getPlaylist(playlistTitle).filterBy(false, false, true);
+                filteredList = PlaylistFilter.filterBy(menu.getPlaylist(playlistTitle), List.of("audiobook"));
                 break;
             case 4:
                 filteredList = menu.getPlaylist(playlistTitle).getContentList();
@@ -339,7 +339,7 @@ public class SpotifyApp {
 
                 // Exibir informações da biblioteca
                 case 3:
-                    System.out.println(myMenu.getPlaylist("library").getDescription());
+                    System.out.println(PlaylistFormatter.getDescription(myMenu.getPlaylist("library")));
                     pressEnter(dataScanner);
                     break;
                 

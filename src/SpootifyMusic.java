@@ -17,6 +17,11 @@ public class SpootifyMusic extends SpootifyContent {
         this.genre = genre;
     }
 
+    @Override
+    public String getType(){
+        return "music";
+    }
+
     public List<String> getSongwriters() {
         return this.songwriters;
     }

@@ -29,4 +29,7 @@ public abstract class SpootifyContent{
     public String toString(){
         return String.format("%s - %d", title, duration);
     }
+
+    //Para definir cada subclase por tipo
+    public abstract String getType();
 }

@@ -12,6 +12,11 @@ public class SpootifyPodcast extends SpootifyContent {
         this.review = review;
     }
 
+    @Override
+    public String getType(){
+        return "podcast";
+    }
+
     public String getPresenter() {
         return this.presenter;
     }

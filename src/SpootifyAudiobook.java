@@ -20,6 +20,11 @@ public class SpootifyAudiobook extends SpootifyContent{
         this.publisher = publisher;
     }
     
+    @Override
+    public String getType(){
+        return "audiobook";
+    }
+
     public String getPublisher() {
         return this.publisher;
     }
